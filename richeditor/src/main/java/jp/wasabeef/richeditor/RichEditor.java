@@ -439,4 +439,40 @@ public class RichEditor extends WebView {
       return super.shouldOverrideUrlLoading(view, url);
     }
   }
+  public void insertDivider() {
+//        exec("javascript:RE.prepareInsert();");
+    exec("javascript:RE.insertDivider();");
+  }
+
+  public void insertEmoji(String url, String alt, String repContent) {
+    exec("javascript:RE.prepareInsert();");
+    String html = String.format("<img rep=\"%s\" alt=\"%s\" src=\"%s\" style=\"width:20px;height:20px\"/>", repContent, alt, url);
+    exec("javascript:RE.insertHTML('" + html + "');");
+  }
+
+  public void insertHtml(String html) {
+    exec("javascript:RE.prepareInsert();");
+    exec("javascript:RE.insertHTML('" + html + "');");
+  }
+
+  public void setAutoBreak() {
+    exec("javascript:RE.setAutoBreak();");
+  }
+
+  /**
+   * 获取文本内容
+   *
+   * @return 文本内容(去空字符)
+   */
+  public String getContent() {
+    String content = mContents;
+    if (TextUtils.isEmpty(content)) {
+      return content;
+    }
+    //替换标签
+    content = content.replaceAll("<[^>]*>", "");
+    //替换空符
+    content = content.replaceAll("\\s*|\t|\r|\n", "");
+    return content;
+  }
 }

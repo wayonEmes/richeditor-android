@@ -310,3 +310,12 @@ RE.editor.addEventListener("keyup", function(e) {
     }
 });
 RE.editor.addEventListener("click", RE.enabledEditingItems);
+
+RE.insertDivider = function() {
+    var html = '<hr /><br />';
+    RE.insertHTML(html);
+}
+
+RE.setAutoBreak = function() {
+    RE.editor.style.wordBreak = "break-all";
+}

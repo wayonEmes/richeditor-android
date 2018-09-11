@@ -181,7 +181,12 @@ sub {
  */
 
 img {
-  border: 0;
+    height: auto;
+    margin: 0px 0 0px 0;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 100%;
+    opacity:1;
 }
 
 /**
